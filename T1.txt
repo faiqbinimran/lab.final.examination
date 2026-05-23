@@ -1,0 +1,38 @@
+import 'dart:async';
+import 'dart:math';
+
+Future<int> fetchApiStatus() async {
+  await Future.delayed(Duration(seconds: 5));
+
+  List<int> statusCodes = [500, 404, 200];
+  return statusCodes[Random().nextInt(statusCodes.length)];
+}
+
+void main() async {
+  print('Connecting..');
+
+  int statusCode = await fetchApiStatus();
+
+  if (statusCode == 500) {
+    print('Internal server error occurred.');
+  } else if (statusCode == 404) {
+    print('Resource not found.');
+  } else if (statusCode == 200) {
+    print('Request completed successfully.');
+  } else {
+    print('Unexpected response received.');
+  }
+}
+
+cd api_status_project
+dart run
+git init
+git add .
+git commit -m "Initial commit for API"
+
+Project name: flutter-assisgnment01
+git remote add origin https://github.com/sameerkhalid01/flutter-assisgnment01.git
+git branch -M main
+git push -u origin main
+
+https://github.com/sameerkhalid01/flutter-assisgnment01
